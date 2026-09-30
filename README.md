@@ -18,7 +18,7 @@ An MCP server that lets AI agents find and rent GPUs on [AmpleRun](https://ample
 | `AMPLERUN_BASE_URL` | No | API origin. Defaults to `https://amplerun.com`. |
 | `AMPLERUN_AGENT_WALLET_KEY` | No | A 0x-prefixed EVM private key. `register_agent_account` signs its challenge with it, so the agent opens its own account with no email, and the server then uses the key it was issued. The private key never leaves this process and is never printed. |
 
-`top_up` without a wallet returns the x402 payment requirements for your own wallet to sign. See [docs/integrations/x402.md](../../docs/integrations/x402.md). Use a dedicated wallet holding only what the agent may spend.
+`top_up` without a wallet returns the x402 payment requirements for your own wallet to sign. See [the agents guide](https://amplerun.com/docs/agents). Use a dedicated wallet holding only what the agent may spend.
 
 The key is sent only as the `Authorization` header to the API. The server never writes it to its output, logs or error messages. It does live in your client's config file: use a renter-scoped key with an expiry, and revoke it at Account → Security when you are done.
 
