@@ -1,0 +1,55 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.amplerun/gpu-rentals",
+  "title": "AmpleRun GPU rentals",
+  "description": "Find, price, rent and stop GPUs on AmpleRun. Paid in USDC or USDT on Base. Flat 5% fee.",
+  "version": "0.1.1",
+  "websiteUrl": "https://amplerun.com/docs/agents",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@amplerun/mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "AMPLERUN_API_KEY",
+          "description": "AmpleRun API key (ark_...) from Account \u2192 Security. list_templates and search_offers work without it.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "AMPLERUN_MCP_ALLOW_SPEND",
+          "description": "Set to 1 to allow create_rental and stop_rental. Unset keeps the server read-only.",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://amplerun.com/api/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "AmpleRun API key from Account \u2192 Security. The renter scope allows renting and stopping.",
+          "value": "Bearer {api_key}",
+          "isRequired": true,
+          "isSecret": true,
+          "variables": {
+            "api_key": {
+              "description": "AmpleRun API key (ark_...)",
+              "isRequired": true,
+              "isSecret": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

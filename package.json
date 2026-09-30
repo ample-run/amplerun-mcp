@@ -1,0 +1,55 @@
+{
+  "name": "@amplerun/mcp",
+  "version": "0.1.1",
+  "mcpName": "com.amplerun/gpu-rentals",
+  "description": "MCP server (stdio) that lets AI agents find and rent GPUs on AmpleRun, and register their own account with a wallet. Wraps @amplerun/sdk; read-only unless AMPLERUN_MCP_ALLOW_SPEND=1.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "amplerun-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && vitest run"
+  },
+  "dependencies": {
+    "@amplerun/sdk": "^0.1.1",
+    "@modelcontextprotocol/server": "2.1.0",
+    "viem": "2.56.5",
+    "zod": "4.6.4"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.1.0",
+    "typescript": "5.9.3",
+    "vitest": "5.0.0",
+    "@types/node": "24.13.4"
+  },
+  "homepage": "https://amplerun.com/docs/agents",
+  "keywords": [
+    "amplerun",
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "gpu",
+    "llm"
+  ],
+  "author": "AmpleRun (https://amplerun.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ample-run/amplerun-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ample-run/amplerun-mcp/issues"
+  }
+}
